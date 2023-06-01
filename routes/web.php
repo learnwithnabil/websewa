@@ -25,6 +25,13 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/admin', function() {
+    return "Hi Adminku";
+})->middleware('role:superoot');
+Route::get('/sales', function() {
+    return "Hi Salesku";
+})->middleware('role:sales');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
